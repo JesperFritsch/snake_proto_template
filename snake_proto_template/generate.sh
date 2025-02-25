@@ -10,4 +10,7 @@ OUTPUT_DIR_PYTHON="./python"
 mkdir -p "$OUTPUT_DIR_PYTHON"
 python3 -m grpc_tools.protoc -I$(dirname "$PROTO_FILE") --python_out="$OUTPUT_DIR_PYTHON" --grpc_python_out="$OUTPUT_DIR_PYTHON" "$PROTO_FILE"
 
+# Fix the import paths in the generated Python files
+sed -i 's/import remote_snake_pb2 as remote__snake__pb2/from . import remote_snake_pb2 as remote__snake__pb2/' "$OUTPUT_DIR_PYTHON"/*.py
+
 echo "gRPC Python code generated successfully in $OUTPUT_DIR_PYTHON"
