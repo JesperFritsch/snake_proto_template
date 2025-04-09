@@ -1,5 +1,6 @@
 from setuptools import setup, find_packages
 from setuptools.command.build_py import build_py as _build_py
+from pathlib import Path
 import subprocess
 
 class CustomBuild(_build_py):
@@ -8,7 +9,7 @@ class CustomBuild(_build_py):
         _build_py.run(self)
         # Run the build.py script
         print('Running generate.sh')
-        subprocess.run(['./snake_proto_template/generate.sh'])
+        subprocess.run([f'{Path(__file__).parent}/snake_proto_template/generate.sh'])
 
 setup(
     name="snake_proto_template",
