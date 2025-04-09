@@ -8,8 +8,8 @@ class CustomBuild(_build_py):
         # Run the original build code
         _build_py.run(self)
         # Run the build.py script
-        print('Running generate.sh')
-        subprocess.run([f'{Path(__file__).parent}/snake_proto_template/generate.sh'])
+        print('Running generate.py')
+        subprocess.run(['python', f'{Path(__file__).parent}/snake_proto_template/generate.py'])
 
 setup(
     name="snake_proto_template",
