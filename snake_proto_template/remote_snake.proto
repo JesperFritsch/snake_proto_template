@@ -38,6 +38,7 @@ message SnakeValues {
 message EnvData {
     bytes map = 1;
     map<int32, SnakeRep> snakes = 2;
+    repeated Coord food_locations = 3;
 }
 
 message SnakeRep {
