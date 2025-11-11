@@ -58,4 +58,5 @@ service RemoteSnake {
     rpc SetStartPosition(StartPosition) returns (Empty);
     rpc SetInitData(EnvInitData) returns (Empty); // Updated SetInitData RPC
     rpc Update(stream EnvData) returns (stream UpdateResponse); // Updated Update RPC
+    rpc Reset(Empty) returns (Empty); // Reset snake
 }
