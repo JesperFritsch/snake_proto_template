@@ -64,6 +64,11 @@ class RemoteSnakeStub(object):
                 request_serializer=remote__snake__pb2.Empty.SerializeToString,
                 response_deserializer=remote__snake__pb2.Empty.FromString,
                 _registered_method=True)
+        self.Kill = channel.unary_unary(
+                '/snake_sim.RemoteSnake/Kill',
+                request_serializer=remote__snake__pb2.Empty.SerializeToString,
+                response_deserializer=remote__snake__pb2.Empty.FromString,
+                _registered_method=True)
 
 
 class RemoteSnakeServicer(object):
@@ -108,6 +113,13 @@ class RemoteSnakeServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def Kill(self, request, context):
+        """Kill the snake
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_RemoteSnakeServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -138,6 +150,11 @@ def add_RemoteSnakeServicer_to_server(servicer, server):
             ),
             'Reset': grpc.unary_unary_rpc_method_handler(
                     servicer.Reset,
+                    request_deserializer=remote__snake__pb2.Empty.FromString,
+                    response_serializer=remote__snake__pb2.Empty.SerializeToString,
+            ),
+            'Kill': grpc.unary_unary_rpc_method_handler(
+                    servicer.Kill,
                     request_deserializer=remote__snake__pb2.Empty.FromString,
                     response_serializer=remote__snake__pb2.Empty.SerializeToString,
             ),
@@ -302,6 +319,33 @@ class RemoteSnake(object):
             request,
             target,
             '/snake_sim.RemoteSnake/Reset',
+            remote__snake__pb2.Empty.SerializeToString,
+            remote__snake__pb2.Empty.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def Kill(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/snake_sim.RemoteSnake/Kill',
             remote__snake__pb2.Empty.SerializeToString,
             remote__snake__pb2.Empty.FromString,
             options,
