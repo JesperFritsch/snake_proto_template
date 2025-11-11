@@ -5,7 +5,7 @@ import warnings
 
 from . import remote_snake_pb2 as remote__snake__pb2
 
-GRPC_GENERATED_VERSION = '1.70.0'
+GRPC_GENERATED_VERSION = '1.76.0'
 GRPC_VERSION = grpc.__version__
 _version_not_supported = False
 
@@ -18,7 +18,7 @@ except ImportError:
 if _version_not_supported:
     raise RuntimeError(
         f'The grpc package installed is at version {GRPC_VERSION},'
-        + f' but the generated code in remote_snake_pb2_grpc.py depends on'
+        + ' but the generated code in remote_snake_pb2_grpc.py depends on'
         + f' grpcio>={GRPC_GENERATED_VERSION}.'
         + f' Please upgrade your grpc module to grpcio>={GRPC_GENERATED_VERSION}'
         + f' or downgrade your generated code using grpcio-tools<={GRPC_VERSION}.'
@@ -59,6 +59,11 @@ class RemoteSnakeStub(object):
                 request_serializer=remote__snake__pb2.EnvData.SerializeToString,
                 response_deserializer=remote__snake__pb2.UpdateResponse.FromString,
                 _registered_method=True)
+        self.Reset = channel.unary_unary(
+                '/snake_sim.RemoteSnake/Reset',
+                request_serializer=remote__snake__pb2.Empty.SerializeToString,
+                response_deserializer=remote__snake__pb2.Empty.FromString,
+                _registered_method=True)
 
 
 class RemoteSnakeServicer(object):
@@ -96,6 +101,13 @@ class RemoteSnakeServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def Reset(self, request, context):
+        """Reset snake
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_RemoteSnakeServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -123,6 +135,11 @@ def add_RemoteSnakeServicer_to_server(servicer, server):
                     servicer.Update,
                     request_deserializer=remote__snake__pb2.EnvData.FromString,
                     response_serializer=remote__snake__pb2.UpdateResponse.SerializeToString,
+            ),
+            'Reset': grpc.unary_unary_rpc_method_handler(
+                    servicer.Reset,
+                    request_deserializer=remote__snake__pb2.Empty.FromString,
+                    response_serializer=remote__snake__pb2.Empty.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -260,6 +277,33 @@ class RemoteSnake(object):
             '/snake_sim.RemoteSnake/Update',
             remote__snake__pb2.EnvData.SerializeToString,
             remote__snake__pb2.UpdateResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def Reset(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/snake_sim.RemoteSnake/Reset',
+            remote__snake__pb2.Empty.SerializeToString,
+            remote__snake__pb2.Empty.FromString,
             options,
             channel_credentials,
             insecure,
