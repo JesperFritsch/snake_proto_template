@@ -1,4 +1,5 @@
-from setuptools import setup, find_packages
+
+from setuptools import setup
 from setuptools.command.build_py import build_py as _build_py
 from pathlib import Path
 import subprocess
@@ -15,14 +16,6 @@ class CustomBuild(_build_py):
         super().run()
 
 setup(
-    name="snake_proto_template",
-    version="0.1.0",
-    packages=find_packages(),
-    install_requires=[
-        "grpcio>=1.69.0",
-        "protobuf>=5.29.3",
-        "grpcio-tools>=1.69.0",
-    ],
     cmdclass={
         'build_py': CustomBuild,
     },
