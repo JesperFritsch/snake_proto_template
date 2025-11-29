@@ -9,7 +9,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "snake_proto_template"
-version = "0.1.0"
+version = "0.1.1"
 description = "A template for Python projects using gRPC and Protocol Buffers."
 authors = [
     { name = "Jesper Fritsch" }
