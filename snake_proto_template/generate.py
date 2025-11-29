@@ -7,26 +7,25 @@ from pathlib import Path
 
 def main():
     script_dir = Path(__file__).parent.resolve()
-    proto_file = script_dir / "remote_snake.proto"
     output_dir_python = script_dir / "python"
 
     # Ensure the output directory exists
     output_dir_python.mkdir(exist_ok=True)
 
-    # Run the gRPC code generator
-    # Equivalent to: 
-    #   python -m grpc_tools.protoc \
-    #       -I {script_dir} \
-    #       --python_out={output_dir_python} \
-    #       --grpc_python_out={output_dir_python} \
-    #       remote_snake.proto
-    subprocess.run([
+    # Find all .proto files in the script directory
+    proto_files = list(script_dir.glob("*.proto"))
+    if not proto_files:
+        print("No .proto files found.")
+        return
+
+    # Run the gRPC code generator for all proto files
+    protoc_cmd = [
         "python", "-m", "grpc_tools.protoc",
         f"-I{script_dir}",
         f"--python_out={output_dir_python}",
-        f"--grpc_python_out={output_dir_python}",
-        str(proto_file)
-    ], check=True)
+        f"--grpc_python_out={output_dir_python}"
+    ] + [str(pf) for pf in proto_files]
+    subprocess.run(protoc_cmd, check=True)
 
     # Fix the import paths in the generated Python files
     # (Mimicking what 'sed' did in the Bash script)

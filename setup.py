@@ -5,11 +5,14 @@ import subprocess
 
 class CustomBuild(_build_py):
     def run(self):
+        # Run the generate.py script before building
+        script_path = Path(__file__).parent / 'snake_proto_template' / 'generate.py'
+        print(f'Running {script_path}')
+        result = subprocess.run(['python', str(script_path)], check=True)
+        if result.returncode != 0:
+            raise RuntimeError(f"Failed to generate proto files: {result}")
         # Run the original build code
-        _build_py.run(self)
-        # Run the build.py script
-        print('Running generate.py')
-        subprocess.run(['python', f'{Path(__file__).parent}/snake_proto_template/generate.py'])
+        super().run()
 
 setup(
     name="snake_proto_template",
