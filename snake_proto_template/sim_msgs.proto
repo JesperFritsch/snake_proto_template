@@ -58,7 +58,8 @@ message RunMetaData {
     map<int32, RGB> color_mapping = 6;
     repeated int32 snake_ids = 7;
     repeated int32 base_map = 8;
-    map<int32, SnakeValues> snake_values = 9;
+    string base_map_dtype = 9;
+    map<int32, SnakeValues> snake_values = 10;
 }
 
 // Main message for the game configuration and state
@@ -95,22 +96,6 @@ message PixelChanges {
 message PixelData {
     Position coord = 1;
     RGB color = 2;
-}
-
-// MESSAGES BETWEEN SNAKE AND ENVIRONMENT ######################################
-
-message EnvData {
-    int32 width = 1;
-    int32 height = 2;
-    bytes map = 3;
-    repeated Position food = 4;
-    int32 FOOD_VALUE = 5;
-    int32 FREE_VALUE = 6;
-    int32 BLOCKED_VALUE = 7;
-}
-
-message SnakeAction {
-    Position action = 2;
 }
 
 // client -> server Requests ######################################
