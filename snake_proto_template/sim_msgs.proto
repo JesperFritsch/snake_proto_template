@@ -57,7 +57,7 @@ message RunMetaData {
     int32 blocked_value = 5;
     map<int32, RGB> color_mapping = 6;
     repeated int32 snake_ids = 7;
-    repeated int32 base_map = 8;
+    bytes base_map = 8;
     string base_map_dtype = 9;
     map<int32, SnakeValues> snake_values = 10;
 }

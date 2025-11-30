@@ -28,6 +28,7 @@ message EnvInitData {
     map<int32, SnakeValues> snake_values = 6;
     map<int32, Coord> start_positions = 7;
     bytes base_map = 8;
+    string base_map_dtype = 9;
 }
 
 message SnakeValues {
