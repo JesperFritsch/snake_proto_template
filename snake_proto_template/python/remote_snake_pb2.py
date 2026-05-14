@@ -24,13 +24,15 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x12remote_snake.proto\x12\tsnake_sim\"\x1d\n\x05\x43oord\x12\t\n\x01x\x18\x01 \x01(\x05\x12\t\n\x01y\x18\x02 \x01(\x05\"\x15\n\x07SnakeId\x12\n\n\x02id\x18\x01 \x01(\x05\"\x1d\n\x0bStartLength\x12\x0e\n\x06length\x18\x01 \x01(\x05\"9\n\rStartPosition\x12(\n\x0estart_position\x18\x01 \x01(\x0b\x32\x10.snake_sim.Coord\"\x96\x03\n\x0b\x45nvInitData\x12\x0e\n\x06height\x18\x01 \x01(\x05\x12\r\n\x05width\x18\x02 \x01(\x05\x12\x12\n\nfree_value\x18\x03 \x01(\x05\x12\x15\n\rblocked_value\x18\x04 \x01(\x05\x12\x12\n\nfood_value\x18\x05 \x01(\x05\x12=\n\x0csnake_values\x18\x06 \x03(\x0b\x32\'.snake_sim.EnvInitData.SnakeValuesEntry\x12\x43\n\x0fstart_positions\x18\x07 \x03(\x0b\x32*.snake_sim.EnvInitData.StartPositionsEntry\x12\x10\n\x08\x62\x61se_map\x18\x08 \x01(\x0c\x1aJ\n\x10SnakeValuesEntry\x12\x0b\n\x03key\x18\x01 \x01(\x05\x12%\n\x05value\x18\x02 \x01(\x0b\x32\x16.snake_sim.SnakeValues:\x02\x38\x01\x1aG\n\x13StartPositionsEntry\x12\x0b\n\x03key\x18\x01 \x01(\x05\x12\x1f\n\x05value\x18\x02 \x01(\x0b\x32\x10.snake_sim.Coord:\x02\x38\x01\"5\n\x0bSnakeValues\x12\x12\n\nhead_value\x18\x01 \x01(\x05\x12\x12\n\nbody_value\x18\x02 \x01(\x05\"\xb4\x01\n\x07\x45nvData\x12\x0b\n\x03map\x18\x01 \x01(\x0c\x12.\n\x06snakes\x18\x02 \x03(\x0b\x32\x1e.snake_sim.EnvData.SnakesEntry\x12(\n\x0e\x66ood_locations\x18\x03 \x03(\x0b\x32\x10.snake_sim.Coord\x1a\x42\n\x0bSnakesEntry\x12\x0b\n\x03key\x18\x01 \x01(\x05\x12\"\n\x05value\x18\x02 \x01(\x0b\x32\x13.snake_sim.SnakeRep:\x02\x38\x01\",\n\x08SnakeRep\x12\x10\n\x08is_alive\x18\x01 \x01(\x08\x12\x0e\n\x06length\x18\x02 \x01(\x05\"5\n\x0eUpdateResponse\x12#\n\tdirection\x18\x01 \x01(\x0b\x32\x10.snake_sim.Coord\"\x07\n\x05\x45mpty2\x87\x03\n\x0bRemoteSnake\x12-\n\x05SetId\x12\x12.snake_sim.SnakeId\x1a\x10.snake_sim.Empty\x12:\n\x0eSetStartLength\x12\x16.snake_sim.StartLength\x1a\x10.snake_sim.Empty\x12>\n\x10SetStartPosition\x12\x18.snake_sim.StartPosition\x1a\x10.snake_sim.Empty\x12\x37\n\x0bSetInitData\x12\x16.snake_sim.EnvInitData\x1a\x10.snake_sim.Empty\x12;\n\x06Update\x12\x12.snake_sim.EnvData\x1a\x19.snake_sim.UpdateResponse(\x01\x30\x01\x12+\n\x05Reset\x12\x10.snake_sim.Empty\x1a\x10.snake_sim.Empty\x12*\n\x04Kill\x12\x10.snake_sim.Empty\x1a\x10.snake_sim.Emptyb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x12remote_snake.proto\x12\tsnake_sim\"\x1d\n\x05\x43oord\x12\t\n\x01x\x18\x01 \x01(\x05\x12\t\n\x01y\x18\x02 \x01(\x05\"\x15\n\x07SnakeId\x12\n\n\x02id\x18\x01 \x01(\x05\"\x1d\n\x0bStartLength\x12\x0e\n\x06length\x18\x01 \x01(\x05\"9\n\rStartPosition\x12(\n\x0estart_position\x18\x01 \x01(\x0b\x32\x10.snake_sim.Coord\"\x9e\x04\n\x0b\x45nvInitData\x12\x0e\n\x06height\x18\x01 \x01(\x05\x12\r\n\x05width\x18\x02 \x01(\x05\x12\x12\n\nfree_value\x18\x03 \x01(\x05\x12\x15\n\rblocked_value\x18\x04 \x01(\x05\x12\x12\n\nfood_value\x18\x05 \x01(\x05\x12;\n\x0bsnake_names\x18\x06 \x03(\x0b\x32&.snake_sim.EnvInitData.SnakeNamesEntry\x12=\n\x0csnake_values\x18\x07 \x03(\x0b\x32\'.snake_sim.EnvInitData.SnakeValuesEntry\x12\x43\n\x0fstart_positions\x18\x08 \x03(\x0b\x32*.snake_sim.EnvInitData.StartPositionsEntry\x12\x10\n\x08\x62\x61se_map\x18\t \x01(\x0c\x12\x16\n\x0e\x62\x61se_map_dtype\x18\n \x01(\t\x1a\x31\n\x0fSnakeNamesEntry\x12\x0b\n\x03key\x18\x01 \x01(\x05\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x1aJ\n\x10SnakeValuesEntry\x12\x0b\n\x03key\x18\x01 \x01(\x05\x12%\n\x05value\x18\x02 \x01(\x0b\x32\x16.snake_sim.SnakeValues:\x02\x38\x01\x1aG\n\x13StartPositionsEntry\x12\x0b\n\x03key\x18\x01 \x01(\x05\x12\x1f\n\x05value\x18\x02 \x01(\x0b\x32\x10.snake_sim.Coord:\x02\x38\x01\"5\n\x0bSnakeValues\x12\x12\n\nhead_value\x18\x01 \x01(\x05\x12\x12\n\nbody_value\x18\x02 \x01(\x05\"\xb4\x01\n\x07\x45nvData\x12\x0b\n\x03map\x18\x01 \x01(\x0c\x12.\n\x06snakes\x18\x02 \x03(\x0b\x32\x1e.snake_sim.EnvData.SnakesEntry\x12(\n\x0e\x66ood_locations\x18\x03 \x03(\x0b\x32\x10.snake_sim.Coord\x1a\x42\n\x0bSnakesEntry\x12\x0b\n\x03key\x18\x01 \x01(\x05\x12\"\n\x05value\x18\x02 \x01(\x0b\x32\x13.snake_sim.SnakeRep:\x02\x38\x01\",\n\x08SnakeRep\x12\x10\n\x08is_alive\x18\x01 \x01(\x08\x12\x0e\n\x06length\x18\x02 \x01(\x05\"5\n\x0eUpdateResponse\x12#\n\tdirection\x18\x01 \x01(\x0b\x32\x10.snake_sim.Coord\"\x07\n\x05\x45mpty2\x87\x03\n\x0bRemoteSnake\x12-\n\x05SetId\x12\x12.snake_sim.SnakeId\x1a\x10.snake_sim.Empty\x12:\n\x0eSetStartLength\x12\x16.snake_sim.StartLength\x1a\x10.snake_sim.Empty\x12>\n\x10SetStartPosition\x12\x18.snake_sim.StartPosition\x1a\x10.snake_sim.Empty\x12\x37\n\x0bSetInitData\x12\x16.snake_sim.EnvInitData\x1a\x10.snake_sim.Empty\x12;\n\x06Update\x12\x12.snake_sim.EnvData\x1a\x19.snake_sim.UpdateResponse(\x01\x30\x01\x12+\n\x05Reset\x12\x10.snake_sim.Empty\x1a\x10.snake_sim.Empty\x12*\n\x04Kill\x12\x10.snake_sim.Empty\x1a\x10.snake_sim.Emptyb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'remote_snake_pb2', _globals)
 if not _descriptor._USE_C_DESCRIPTORS:
   DESCRIPTOR._loaded_options = None
+  _globals['_ENVINITDATA_SNAKENAMESENTRY']._loaded_options = None
+  _globals['_ENVINITDATA_SNAKENAMESENTRY']._serialized_options = b'8\001'
   _globals['_ENVINITDATA_SNAKEVALUESENTRY']._loaded_options = None
   _globals['_ENVINITDATA_SNAKEVALUESENTRY']._serialized_options = b'8\001'
   _globals['_ENVINITDATA_STARTPOSITIONSENTRY']._loaded_options = None
@@ -46,23 +48,25 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_STARTPOSITION']._serialized_start=118
   _globals['_STARTPOSITION']._serialized_end=175
   _globals['_ENVINITDATA']._serialized_start=178
-  _globals['_ENVINITDATA']._serialized_end=584
-  _globals['_ENVINITDATA_SNAKEVALUESENTRY']._serialized_start=437
-  _globals['_ENVINITDATA_SNAKEVALUESENTRY']._serialized_end=511
-  _globals['_ENVINITDATA_STARTPOSITIONSENTRY']._serialized_start=513
-  _globals['_ENVINITDATA_STARTPOSITIONSENTRY']._serialized_end=584
-  _globals['_SNAKEVALUES']._serialized_start=586
-  _globals['_SNAKEVALUES']._serialized_end=639
-  _globals['_ENVDATA']._serialized_start=642
-  _globals['_ENVDATA']._serialized_end=822
-  _globals['_ENVDATA_SNAKESENTRY']._serialized_start=756
-  _globals['_ENVDATA_SNAKESENTRY']._serialized_end=822
-  _globals['_SNAKEREP']._serialized_start=824
-  _globals['_SNAKEREP']._serialized_end=868
-  _globals['_UPDATERESPONSE']._serialized_start=870
-  _globals['_UPDATERESPONSE']._serialized_end=923
-  _globals['_EMPTY']._serialized_start=925
-  _globals['_EMPTY']._serialized_end=932
-  _globals['_REMOTESNAKE']._serialized_start=935
-  _globals['_REMOTESNAKE']._serialized_end=1326
+  _globals['_ENVINITDATA']._serialized_end=720
+  _globals['_ENVINITDATA_SNAKENAMESENTRY']._serialized_start=522
+  _globals['_ENVINITDATA_SNAKENAMESENTRY']._serialized_end=571
+  _globals['_ENVINITDATA_SNAKEVALUESENTRY']._serialized_start=573
+  _globals['_ENVINITDATA_SNAKEVALUESENTRY']._serialized_end=647
+  _globals['_ENVINITDATA_STARTPOSITIONSENTRY']._serialized_start=649
+  _globals['_ENVINITDATA_STARTPOSITIONSENTRY']._serialized_end=720
+  _globals['_SNAKEVALUES']._serialized_start=722
+  _globals['_SNAKEVALUES']._serialized_end=775
+  _globals['_ENVDATA']._serialized_start=778
+  _globals['_ENVDATA']._serialized_end=958
+  _globals['_ENVDATA_SNAKESENTRY']._serialized_start=892
+  _globals['_ENVDATA_SNAKESENTRY']._serialized_end=958
+  _globals['_SNAKEREP']._serialized_start=960
+  _globals['_SNAKEREP']._serialized_end=1004
+  _globals['_UPDATERESPONSE']._serialized_start=1006
+  _globals['_UPDATERESPONSE']._serialized_end=1059
+  _globals['_EMPTY']._serialized_start=1061
+  _globals['_EMPTY']._serialized_end=1068
+  _globals['_REMOTESNAKE']._serialized_start=1071
+  _globals['_REMOTESNAKE']._serialized_end=1462
 # @@protoc_insertion_point(module_scope)
