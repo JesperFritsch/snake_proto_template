@@ -25,7 +25,7 @@ message EnvInitData {
     int32 free_value = 3;
     int32 blocked_value = 4;
     int32 food_value = 5;
-    map<int32, string> snake_names = 6;
+    map<int32, string> snake_tags = 6;
     map<int32, SnakeValues> snake_values = 7;
     map<int32, Coord> start_positions = 8;
     bytes base_map = 9;

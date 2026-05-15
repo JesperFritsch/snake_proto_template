@@ -3,7 +3,7 @@
 import grpc
 import warnings
 
-from . from . import remote_snake_pb2 as remote__snake__pb2
+from . from . from . import remote_snake_pb2 as remote__snake__pb2
 
 GRPC_GENERATED_VERSION = '1.80.0'
 GRPC_VERSION = grpc.__version__
